@@ -53,6 +53,7 @@ namespace Pathfinding
 
     // see src/Tools/extractor/system.cpp, CONF_use_minHeight
     static const float INVALID_MAP_LIQ_HEIGHT = -500.f;
+    static const float INVALID_MAP_LIQ_HEIGHT_MAX = 5000.0f;
 
     struct MeshData
     {
@@ -85,7 +86,7 @@ namespace Pathfinding
             ~TerrainBuilder();
 
             void loadMap(uint32 mapID, uint32 tileX, uint32 tileY, MeshData &meshData);
-
+            bool usesLiquids() { return !m_skipLiquid; }
         private:
 
             /// Loads a portion of a map's terrain

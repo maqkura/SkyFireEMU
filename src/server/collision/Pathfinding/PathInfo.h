@@ -46,6 +46,7 @@ class Unit;
 #define INVALID_POLYREF   0
 
 // see contrib/mmap/src/TileBuilder.h
+/*
 enum NavTerrain
 {
     NAV_EMPTY   = 0x00,
@@ -59,7 +60,7 @@ enum NavTerrain
     NAV_UNUSED4 = 0x80
     // we only have 8 bits
 };
-
+*/
 enum PathType
 {
     PATHFIND_BLANK          = 0x0000,   // path not built yet

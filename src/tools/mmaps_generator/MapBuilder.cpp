@@ -350,7 +350,7 @@ namespace Pathfinding
             MeshData meshData;
 
             // get heightmap data
-            printf("%s Loading heightmap...                           \r", tileString);
+            printf("%s Loading heightmap 2...                           \r", tileString);
             m_terrainBuilder->loadMap(mapID, tileX, tileY, meshData);
 
             // get model data
@@ -1000,6 +1000,11 @@ namespace Pathfinding
 
             printf("%s Writing to file...                      \r", tileString);
             // should write navDataSize first... for now, just use ftell to find length when reading
+            MmapTileHeader header;
+            header.usesLiquids = m_terrainBuilder->usesLiquids();
+            header.size = uint32(navDataSize);
+            fwrite(&header, sizeof(MmapTileHeader), 1, file);
+            // Write data
             fwrite(navData, sizeof(unsigned char), navDataSize, file);
             fclose(file);
 

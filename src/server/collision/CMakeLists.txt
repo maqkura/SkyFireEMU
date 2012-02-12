@@ -38,6 +38,7 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/dep/g3dlite/include
   ${CMAKE_SOURCE_DIR}/dep/recastnavigation/Detour
   ${CMAKE_SOURCE_DIR}/dep/recastnavigation/Recast
+  ${CMAKE_SOURCE_DIR}/src/server/Shared/Configuration
   ${CMAKE_SOURCE_DIR}/src/Server/Shared
   ${CMAKE_SOURCE_DIR}/src/Server/Shared/Debugging
   ${CMAKE_SOURCE_DIR}/src/Server/Shared/Database

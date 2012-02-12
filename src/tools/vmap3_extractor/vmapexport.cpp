@@ -189,6 +189,7 @@ int ExtractWmo()
                                 strcpy(temp, fname->c_str());
                                 temp[fname->length()-4] = 0;
                                 char groupFileName[1024];
+                                // Added By XEQT sprintf(groupFileName, "%s_%03d.wmo", temp, i);
                                 sprintf(groupFileName, "%s_%03d.wmo", temp, i);
                                 //printf("Trying to open groupfile %s\n", groupFileName);
                                 string s = groupFileName;

@@ -36,19 +36,19 @@
 template<>
 void RandomMovementGenerator<Creature>::_setRandomLocation(Creature &creature)
 {
-    float respX, respY, respZ, respO, currZ, destX, destY, destZ, travelDistZ;
+    float respX, respY, respZ, respO, currZ, destX, destY, destZ, travelDist;
     creature.GetHomePosition(respX, respY, respZ, respO);
-    currZ = creature.GetPositionZ();
+/*    currZ = creature.GetPositionZ();
     Map const* map = creature.GetBaseMap();
 
     // For 2D/3D system selection
     //bool is_land_ok  = creature.CanWalk();                // not used?
     //bool is_water_ok = creature.CanSwim();                // not used?
     bool is_air_ok = creature.canFly();
-
+    */
     const float angle = float(rand_norm()) * static_cast<float>(M_PI*2.0f);
     const float range = float(rand_norm()) * wander_distance;
-    const float distanceX = range * cos(angle);
+/*    const float distanceX = range * cos(angle);
     const float distanceY = range * sin(angle);
 
     destX = respX + distanceX;
@@ -102,13 +102,24 @@ void RandomMovementGenerator<Creature>::_setRandomLocation(Creature &creature)
         i_nextMoveTime.Reset(0);
     else
         i_nextMoveTime.Reset(urand(500, 10000));
+*/
+  
+    destX = respX + range * cos(angle);
+    destY = respY + range * sin(angle);
+    destZ = creature.GetPositionZ();
+    creature.UpdateAllowedPositionZ(destX, destY, destZ);
 
     creature.AddUnitState(UNIT_STATE_ROAMING_MOVE);
 
     Movement::MoveSplineInit init(creature);
-    init.MoveTo(destX, destY, destZ);
+    init.MoveTo(destX, destY, destZ, true);
     init.SetWalk(true);
     init.Launch();
+
+    if (creature.canFly())
+        i_nextMoveTime.Reset(0);
+    else
+        i_nextMoveTime.Reset(urand(500, 10000));
 
     //Call for creature group update
     if (creature.GetFormation() && creature.GetFormation()->getLeader() == &creature)
