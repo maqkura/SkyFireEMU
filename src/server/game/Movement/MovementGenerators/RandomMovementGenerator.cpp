@@ -103,7 +103,7 @@ void RandomMovementGenerator<Creature>::_setRandomLocation(Creature &creature)
     else
         i_nextMoveTime.Reset(urand(500, 10000));
 */
-  
+
     destX = respX + range * cos(angle);
     destY = respY + range * sin(angle);
     destZ = creature.GetPositionZ();
@@ -135,7 +135,7 @@ void RandomMovementGenerator<Creature>::Initialize(Creature &creature)
     if (!wander_distance)
         wander_distance = creature.GetRespawnRadius();
 
-    creature.AddUnitState(UNIT_STATE_ROAMING|UNIT_STATE_ROAMING_MOVE);
+    creature.AddUnitState(UNIT_STATE_ROAMING | UNIT_STATE_ROAMING_MOVE);
     _setRandomLocation(creature);
 }
 
@@ -149,7 +149,7 @@ RandomMovementGenerator<Creature>::Reset(Creature &creature)
 template<>
 void RandomMovementGenerator<Creature>::Finalize(Creature &creature)
 {
-    creature.ClearUnitState(UNIT_STATE_ROAMING|UNIT_STATE_ROAMING_MOVE);
+    creature.ClearUnitState(UNIT_STATE_ROAMING | UNIT_STATE_ROAMING_MOVE);
     creature.SetWalk(false);
 }
 

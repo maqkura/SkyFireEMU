@@ -21,7 +21,7 @@
 #define TRINITY_SHAREDDEFINES_H
 
 #include "Define.h"
-#include "..\..\..\..\dep\recastnavigation\detour\detournavmesh.h"
+#include "detournavmesh.h"
 #include <cassert>
 
 enum SpellEffIndex
@@ -3260,11 +3260,7 @@ enum RemoveMethod
 
 //0x444e4156   'MMAP' Maby the new one
 
-
-
 #define MMAP_VERSION 3
-
-
 
 struct MmapTileHeader
 {
