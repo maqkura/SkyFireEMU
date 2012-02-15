@@ -114,9 +114,9 @@ void RandomMovementGenerator<Creature>::SetRandomLocation(Creature &creature)
     init.Launch();
 
     if (creature.canFly())
-        i_nextMoveTime.Reset(0);
+        _nextMoveTime.Reset(0);
     else
-        i_nextMoveTime.Reset(urand(500, 10000));
+        _nextMoveTime.Reset(urand(500, 10000));
 
     //Call for creature group update
     if (creature.GetFormation() && creature.GetFormation()->getLeader() == &creature)
